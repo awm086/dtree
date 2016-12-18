@@ -50,7 +50,7 @@
             <div class="form-group row">
                 <input type="text" name="phone" placeholder="Phone ###-###-####" class="form-control col-xs-10"
                        ng-model="signupCtrl.user.phone"
-                       pattern="(\d{3})-(\d{3})-(\d{4})">
+                       pattern="(\d{3})(\d{3})(\d{4})">
                 <span ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
             Phone must be in the format ###-###-####.
             </span>
@@ -77,6 +77,10 @@
                         ng-disabled="signupForm.$invalid"
                         ng-click="signupCtrl.submit()">Submit
                 </button>
+            </div>
+
+            <div class="">
+                <span ng-show="signupForm.$submitted && signupCtrl.signupSuccessful">Saved information.</span>
             </div>
             <div style="margin-top: 10px;">
                 Form valid? {{ signupForm.$valid }}

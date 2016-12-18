@@ -5,8 +5,8 @@
     .controller('SignupController', SignupController);
 
   // @todo inject UserDataService
-  SignupController.$inject = ['validMenuItemsShortNames'];
-  function SignupController(validMenuItemsShortNames) {
+  SignupController.$inject = ['validMenuItemsShortNames', 'UserDataService','$scope'];
+  function SignupController(validMenuItemsShortNames, UserDataService, $scope) {
     /*  var $ctrl = this;
      $ctrl.userData = UserDataService.getUserData();*/
 
@@ -16,9 +16,12 @@
     signupCtrl.validMenuItemsShortNames = validMenuItemsShortNames;
     console.log(validMenuItemsShortNames);
     var signup = this;
-
-    signup.submit = function () {
-      signup.completed = true;
+    $scope.userData = {}
+    signupCtrl.submit = function () {
+      UserDataService.saveUserData(signupCtrl.user);
+      $scope.userData = signupCtrl.user;
+      console.log($scope.userData);
+      signupCtrl.signupSuccessful = true;
     };
   }
 
