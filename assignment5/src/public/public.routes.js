@@ -30,15 +30,21 @@ function routeConfig ($stateProvider) {
         }]
       }
     })
-    .state('public.menuitems', {
-      url: '/menu/{category}',
-      templateUrl: 'src/public/menu-items/menu-items.html',
-      controller: 'MenuItemsController',
-      controllerAs: 'menuItemsCtrl',
+
+    .state('public.signup', {
+      url: '/sing-up',
+      templateUrl: 'src/public/signup/signup.html',
+      controller: 'SignupController',
+      controllerAs: 'signupCtrl',
+
       resolve: {
-        menuItems: ['$stateParams','NarrowItDownController', function ($stateParams, MenuService) {
-          return MenuService.getMenuItems($stateParams.category);
-        }]
+        validMenuItemsShortNames: ['MenuService', function (MenuService) {
+          return MenuService.getMenuItems().then(function (data) {
+            return data.menu_items.map(function (element) {
+              return element.short_name;
+            });
+          });
+        }],
       }
     });
 }

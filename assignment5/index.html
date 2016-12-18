@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/restaurant.css">
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/forms.css">
   </head>
   <body ng-app="restaurant" ng-strict-di>
 
@@ -50,14 +51,19 @@
                 <a ui-sref="public.menu">
                   <span class="glyphicon glyphicon-cutlery"></span><br class="hidden-xs"> Menu</a>
               </li>
-              <li>
-                <a href="#">
-                  <span class="glyphicon glyphicon-info-sign"></span><br class="hidden-xs"> About</a>
+
+
+              <li id="navMyInfoButton" ui-sref-active="active">
+                <a ui-sref="public.myinfo">
+                  <span class="glyphicon glyphicon-cutlery"></span><br class="hidden-xs"> my info</a>
               </li>
-              <li>
-                <a href="#">
-                  <span class="glyphicon glyphicon-certificate"></span><br class="hidden-xs"> Awards</a>
+
+              <li id="navSignUpButton" ui-sref-active="active">
+                <a ui-sref="public.signup">
+                  <span class="glyphicon glyphicon-cutlery"></span><br class="hidden-xs"> Sign up</a>
               </li>
+
+
               <li id="phone" class="hidden-xs">
                 <a href="tel:410-602-5008">
                   <span>410-602-5008</span></a><div>* We Deliver</div>
@@ -124,6 +130,7 @@
     <script src="src/common/loading/loading.component.js"></script>
     <script src="src/common/loading/loading.interceptor.js"></script>
     <script src="src/common/menu.service.js"></script>
+    <script src="src/common/valid-dish.directive.js"></script>
 
     <!-- Public Module -->
     <script src="src/public/public.module.js"></script>
@@ -132,6 +139,7 @@
     <script src="src/public/menu-category/menu-category.component.js"></script>
     <script src="src/public/menu-items/menu-items.controller.js"></script>
     <script src="src/public/menu-item/menu-item.component.js"></script>
+    <script src="src/public/signup/signup.controller.js"></script>
 
     <!-- ADMIN SITE -->
 
