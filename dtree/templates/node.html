@@ -1,0 +1,9 @@
+<ul class="list-group">
+    <li ng-show="data.label" class="list-group-item">{{data.label}}</li>
+    <!-- <button ng-click="add(data)">Add node</button> -->
+    <!--<button ng-click="delete(data)" ng-show="data.nodes.length > 0">Delete nodes</button>-->
+    <li ng-show="data.question" class="question list-group-item">{{data.question}}</li>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="data in data.nodes" ng-include="'templates/node.html'"></li>
+    </ul>
+</ul>
