@@ -10,6 +10,7 @@
     service.data = function () {
 
       var data = [{
+        "root": true,
         "label": null,
         "question": "What product category?",
         "nodes": [
@@ -212,8 +213,8 @@
 
   }
 
-  TreeController.$inject = ["$scope", "TreeData"];
-  function TreeController($scope, TreeData ) {
+  TreeController.$inject = ["$scope","$element", "TreeData"];
+  function TreeController($scope, $element, TreeData ) {
 
     function trasverse(data, func) {
       for (var i in data) {
@@ -240,8 +241,31 @@
 
     $scope.tree2 = TreeData.data();
 
+/*
+    $scope.showChilderen = function(key) {
+      //console.log(key);
+      //var elementResult = document.getElementById(key);
+      //console.log(elementResult);
+
+      //var childElem = $element.find(key);
+      //elementResult.removeAttribute("class");
+     // console.log(childElem);
+      var selector = 'div#' + key.replace(':', "\\:");
+      console.log(selector);
+      var myElement = $element.find("div#object\\:7");
+      var myElement2 = $element.find(selector);
+      console.log(myElement2);
+      myElement2.removeClass('hidden');
+    }
+*/
+
+    $scope.showChilderen2 = function(data) {
+      data.showChilderen = !data.showChilderen;
+    }
+
     console.log($scope.tree2);
   }
+
 
 
 })();

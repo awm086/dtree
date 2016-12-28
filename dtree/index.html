@@ -2,6 +2,7 @@
 <html lang="en" ng-app="dTreeApp">
 <head>
     <title>Demo Tree App</title>
+
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -9,16 +10,15 @@
 
 
     <style>
-
+        div .item > div .childeren {
+        }
     </style>
 </head>
 <body>
 <div class="container" ng-controller="TreeController">
     <h1>Tree Demo</h1>
 
-    <ul class="list-group">
-        <li class="list-group-item" ng-repeat="data in tree2" ng-include="'templates/node.html'"></li>
-    </ul>
+        <div class="container" ng-repeat="data in tree2" ng-include="'templates/node.html'"></div>
 
 </div>
 
