@@ -227,13 +227,18 @@
     }
 
 
+    $scope.isLeaf = function(data) {
+      return  data.nodes ? true : false;
+    };
+
     $scope.delete = function (data) {
       data.nodes = [];
     };
     $scope.add = function (data) {
       var post = data.nodes.length + 1;
-      var newlabel = 'node' + '-' + post;
+      var newlabel =  data.newlabel ? data.newlabel : 'node' + '-' + post;
       data.nodes.push({label: newlabel, question: "", nodes: []});
+      $scope.showVertixForm = !$scope.showVertixForm;
     };
 
     $scope.tree = [{label: "Root", question: "", nodes: []}];

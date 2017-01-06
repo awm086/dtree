@@ -1,12 +1,25 @@
 <div class="list-group">
-    <div class="item"><span  ng-if="data.label" ng-click="showChilderen2(data)">{{data.label}}</span>
-        <div class="childeren" id="{{data.$$hashKey}}" ng-class="!data.root && !data.showChilderen ? 'hidden' : ''" >
-        <!-- <button ng-click="add(data)">Add node</button> -->
-        <!--<button ng-click="delete(data)" ng-show="data.nodes.length > 0">Delete nodes</button>-->
-        <span ng-show="data.question" class="question list-group-item">{{data.question}}</span>
-        <div class="node">
-            <span class="list-group-item" ng-repeat="data in data.nodes" ng-include="'templates/node.html'"></span>
-        </div>
+    <div class="item">
+        <span ng-if="data.label" ng-click="showChilderen2(data)">
+            <button type="button" class="btn btn-primary">{{data.label}}</button>
+        </span>
+        <div class="childeren" id="{{data.$$hashKey}}" ng-class="!data.root && !data.showChilderen ? 'hidden' : ''">
+            <!--<button ng-click="add(data)">Add node</button>-->
+            <div ng-show="data.nodes.length > 0">
+                <button ng-click="(showVertixForm = !showVertixForm)">Add node</button>
+                <button ng-click="delete(data)">Delete nodes</button>
+            </div>
+            <div ng-show="showVertixForm">
+                <form novalidate class="form">
+                    <label>label: <input type="text" ng-model="data.newlabel"/></label><br/>
+                    <input type="submit" ng-click="add(data)" value="Save"/>
+                </form>
+            </div>
+            <button ng-show="!data.question" ng-click="showLabelForm = !showLabelForm">Add question</button>
+            <span ng-show="data.question" class="question list-group-item">{{data.question}}</span>
+            <div class="node">
+                <span class="list-group-item" ng-repeat="data in data.nodes" ng-include="'templates/node.html'"></span>
+            </div>
         </div>
     </div>
 </div>
