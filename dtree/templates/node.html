@@ -1,21 +1,27 @@
 <div class="list-group">
     <div class="item">
         <span ng-if="data.label" ng-click="showChilderen2(data)">
-            <button type="button" class="btn btn-primary">{{data.label}}</button>
+            <button type="button" class="btn btn-primary" ng-click="logme(data)">{{data.label}}</button>
         </span>
         <div class="childeren" id="{{data.$$hashKey}}" ng-class="!data.root && !data.showChilderen ? 'hidden' : ''">
-            <!--<button ng-click="add(data)">Add node</button>-->
-            <div ng-show="data.nodes.length > 0">
-                <button ng-click="(showVertixForm = !showVertixForm)">Add node</button>
-                <button ng-click="delete(data)">Delete nodes</button>
-            </div>
-            <div ng-show="showVertixForm">
+            <span ng-show="data.nodes.length > 0 || data.question != null">
+                <button ng-click="(data.showNodeForm = !data.showNodeForm)">Add node</button>
+                <button ng-if="data.nodes.length > 0" ng-click="delete(data)">Delete nodes</button>
+            </span>
+            <button  ng-click="data.showChildForm = !data.showChildForm">Add/edit question</button>
+            <div ng-show="data.showNodeForm">
                 <form novalidate class="form">
                     <label>label: <input type="text" ng-model="data.newlabel"/></label><br/>
                     <input type="submit" ng-click="add(data)" value="Save"/>
                 </form>
             </div>
-            <button ng-show="!data.question" ng-click="showLabelForm = !showLabelForm">Add question</button>
+
+            <div ng-show="data.showChildForm" id="form-{{data.$$hashKey}}">
+                <form novalidate class="form">
+                    <label>Question: <input type="text" ng-model="data.question"/></label><br/>
+                    <input type="submit" ng-click="addChild(data)" value="Save"/>
+                </form>
+            </div>
             <span ng-show="data.question" class="question list-group-item">{{data.question}}</span>
             <div class="node">
                 <span class="list-group-item" ng-repeat="data in data.nodes" ng-include="'templates/node.html'"></span>

@@ -173,7 +173,7 @@
               },
               {
                 "label": "Soda pop",
-                "question": null,
+                "question": "What kind",
                 "nodes": [
                   {
                     "label": "Cola",
@@ -233,13 +233,31 @@
 
     $scope.delete = function (data) {
       data.nodes = [];
+      data.question = null;
     };
     $scope.add = function (data) {
-      var post = data.nodes.length + 1;
-      var newlabel =  data.newlabel ? data.newlabel : 'node' + '-' + post;
+      // var post = data.nodes.length + 1;
+      if (!data.nodes) {
+        data.nodes = [];
+      }
+      var newlabel =  data.newlabel ? data.newlabel : ""; // 'node' + '-' + post;
       data.nodes.push({label: newlabel, question: "", nodes: []});
-      $scope.showVertixForm = !$scope.showVertixForm;
+      console.log(data);
+      data.showNodeForm = !data.showNodeForm;
     };
+
+    $scope.addChild = function (data) {
+      //data.nodes = [];
+      var newQuestion = data.question ? data.question : null;
+      //data.nodes.push({label: "", question: newQuestion, nodes: []});
+      data.showChildForm = !data.showChildForm;
+      console.log($scope.showChildForm);
+      console.log($scope.tree2);
+    };
+
+    $scope.logme = function (data) {
+      console.log(data)
+    }
 
     $scope.tree = [{label: "Root", question: "", nodes: []}];
     console.log($scope.tree);
