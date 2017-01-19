@@ -4,18 +4,21 @@
     <title>Demo Tree App</title>
 
     <script src="lib/angular.min.js"></script>
-    <script src="lib/angular-ui-router.min.js"></script>
     <script src="src/tree.app.js"></script>
     <script src="src/treedata.service.js"> </script>
     <script src="src/tree.controller.js"></script>
-    <script src="src/routes.js"></script>
 
 
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<ui-view></ui-view>
+<div class="container" ng-controller="TreeController">
+    <h1>Tree Demo</h1>
+
+    <div class="container" ng-repeat="data in tree" ng-include="'templates/node.html'"></div>
+
+</div>
 
 </body>
 </html>
