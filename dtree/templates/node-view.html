@@ -1,15 +1,18 @@
 <div class="list-group">
     <div class="item">
-        <span ng-if="data.label" ng-click="showChilderen2(data)">
-            <button type="button" class="btn btn-primary" ng-click="logme(data)">{{data.label}}</button>
-        </span>
+
         <div class="childeren" id="{{data.$$hashKey}}" ng-class="!data.root && !data.showChilderen ? 'hidden' : ''">
             <!-- @Todo determine if we want to allow nodes to be added without questions/lables.-->
 
 
             <span ng-show="data.question" class="question list-group-item">{{data.question}}</span>
             <div class="node">
-                <span class="list-group-item" ng-repeat="data in data.nodes" ng-include="'templates/node-view.html'"></span>
+                <span class="list-group-item" ng-repeat="data in data.nodes">
+                    <span ng-if="data.label" ng-click="showChilderen2(data)">
+                        <button type="button" class="btn btn-primary" ng-click="logme(data)">{{data.label}}</button>
+                    </span>
+                </span>
+                <!--<span class="list-group-item" ng-repeat="data in data.nodes" ng-include="'templates/node-view.html'"></span> -->
             </div>
         </div>
     </div>
