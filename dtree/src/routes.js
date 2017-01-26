@@ -10,14 +10,38 @@
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-      .state('admin', {
-        url: '/admin',
-        templateUrl: 'templates/admin.template.html'
+      .state('tree', {
+        abstract: true,
+        controller: 'TreeController',
+        url: '',
+        // Note: abstract still needs a ui-view for its children to populate.
+        // You can simply add it inline here.
+        template: '<ui-view/>',
+        resolve: {
+          treeData: ['TreeData', function(TreeData) {
+            return TreeData.data();
+          }]
+        }
       })
 
-      .state('view', {
+      .state('tree.admin', {
+        url: '/admin',
+        templateUrl: 'templates/admin.template.html',
+      })
+
+      .state('tree.view1', {
         url: '/view',
-        templateUrl: 'templates/view.template.html'
+        controller: 'TreeController',
+        templateUrl: 'templates/view.template.html',
+      })
+      .state('tree.view', {
+        url: '/view/:path',
+        templateUrl: 'templates/view.template.html',
+        resolve: {
+          path: ['$stateParams', function($stateParams) {
+            console.log($stateParams);
+          }]
+        }
       });
   }
 })();

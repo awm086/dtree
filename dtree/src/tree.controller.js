@@ -2,8 +2,9 @@
   'use strict';
   angular.module("dTreeApp")
     .controller("TreeController", TreeController);
-  TreeController.$inject = ["$scope", "$element", "TreeData"];
-  function TreeController($scope, $element, TreeData) {
+  //TreeController.$inject = ["$scope", "$element", "TreeData"];
+  TreeController.$inject = ["$scope", "treeData"];
+  function TreeController($scope, treeData) {
 
     function trasverse(data, func) {
       for (var i in data) {
@@ -47,11 +48,18 @@
 
     $scope.logme = function (data) {
       console.log(data)
+
+    };
+
+    $scope.viewChild = function (data) {
+      $scope.tree = [data];
+      console.log($scope.tree)
+      console.log(data)
     };
 
     //$scope.tree = [{label: "Root", question: "", nodes: []}];
 
-    $scope.tree = TreeData.data();
+    $scope.tree = treeData;
     console.log($scope.tree)
 
     /*$scope.tree = TreeData.getTreeData().then(function (response) {
@@ -62,7 +70,6 @@
     });*/
 
 
-    console.log($scope.tree3);
     /*
      $scope.showChilderen = function(key) {
      //console.log(key);
