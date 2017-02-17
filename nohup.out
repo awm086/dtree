@@ -1,0 +1,15 @@
+events.js:141
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE 0.0.0.0:3001
+    at Object.exports._errnoException (util.js:870:11)
+    at exports._exceptionWithHostPort (util.js:893:20)
+    at Server._listen2 (net.js:1231:14)
+    at listen (net.js:1267:10)
+    at net.js:1376:9
+    at nextTickCallbackWith3Args (node.js:453:9)
+    at process._tickCallback (node.js:359:17)
+    at Function.Module.runMain (module.js:443:11)
+    at startup (node.js:139:18)
+    at node.js:968:3
