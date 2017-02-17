@@ -85,6 +85,7 @@
      */
 
     this.showChilderen2 = function (data) {
+      console.log(data);
       data.showChilderen = !data.showChilderen;
     };
 
