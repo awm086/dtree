@@ -1,4 +1,5 @@
 list:
+<div>{data |json}</div>
 <div class="list-group">
     <div class="item">
         <div class="childeren" id="{{data.$$hashKey}}">
@@ -10,7 +11,7 @@ list:
                   <div class="item">
                      <span ng-if="data.label">
                      <button type="button" class="btn btn-primary"
-                             ng-click="viewChild(data)">{{data.label}}</button>
+                             ng-click="treeCtrl.viewChild(data)">{{data.label}}</button>
                      </span>
                   </div>
                </div>

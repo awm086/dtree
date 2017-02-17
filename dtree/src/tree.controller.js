@@ -2,9 +2,8 @@
   'use strict';
   angular.module("dTreeApp")
     .controller("TreeController", TreeController);
-  //TreeController.$inject = ["$scope", "$element", "TreeData"];
-  TreeController.$inject = ["$scope", "treeData"];
-  function TreeController($scope, treeData) {
+  TreeController.$inject = ["treeData"];
+  function TreeController(treeData) {
 
     function trasverse(data, func) {
       for (var i in data) {
@@ -17,16 +16,16 @@
     }
 
 
-    $scope.isLeaf = function (data) {
+    this.isLeaf = function (data) {
       return data.nodes ? true : false;
     };
 
-    $scope.delete = function (data) {
+    this.delete = function (data) {
       data.nodes = [];
       data.question = null;
     };
 
-    $scope.add = function (data) {
+    this.add = function (data) {
       // var post = data.nodes.length + 1;
       if (!data.nodes) {
         data.nodes = [];
@@ -37,32 +36,29 @@
       data.showNodeForm = !data.showNodeForm;
     };
 
-    $scope.addChild = function (data) {
+    this.addChild = function (data) {
       //data.nodes = [];
       var newQuestion = data.question ? data.question : null;
       //data.nodes.push({label: "", question: newQuestion, nodes: []});
       data.showChildForm = !data.showChildForm;
-      console.log($scope.showChildForm);
-      console.log($scope.tree2);
+      console.log(this.showChildForm);
+      console.log(this.tree2);
     };
 
-    $scope.logme = function (data) {
+    this.logme = function (data) {
       console.log(data)
 
     };
 
-    $scope.viewChild = function (data) {
-      $scope.tree = [data];
-      console.log($scope.tree)
-      console.log(data)
+    this.viewChild = function (data) {
+      this.tree = [data];
     };
 
-    //$scope.tree = [{label: "Root", question: "", nodes: []}];
+    //this.tree = [{label: "Root", question: "", nodes: []}];
 
-    $scope.tree = treeData;
-    console.log($scope.tree)
+    this.tree = treeData;
 
-    /*$scope.tree = TreeData.getTreeData().then(function (response) {
+    /*this.tree = TreeData.getTreeData().then(function (response) {
       console.log(response);
       return response.data;
     }, function (error) {
@@ -71,7 +67,7 @@
 
 
     /*
-     $scope.showChilderen = function(key) {
+     this.showChilderen = function(key) {
      //console.log(key);
      //var elementResult = document.getElementById(key);
      //console.log(elementResult);
@@ -88,7 +84,7 @@
      }
      */
 
-    $scope.showChilderen2 = function (data) {
+    this.showChilderen2 = function (data) {
       data.showChilderen = !data.showChilderen;
     };
 

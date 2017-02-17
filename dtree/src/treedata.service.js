@@ -218,6 +218,22 @@
         Method: 'GET',
         url: (ApiBasePath + "/tree")
       });
+    };
+
+    var subTree = function subTreeRec(data, indexes) {
+      var sub = data[indexes[0]];
+      return indexes.length > 1 ? subTree(sub.nodes, indexes.slice(1)) : sub;
+    };
+
+    // todo this may take an id.
+    service.getTreeNode = function (path) {
+      var data = this.data();
+      path = path.split(':')
+      var subTreeData = subTree(data, path);
+      data[0] = subTreeData;
+      console.log(data);
+      //console.log(subTreeData);
+      return data;
     }
 
   }

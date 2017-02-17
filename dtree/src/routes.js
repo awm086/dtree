@@ -7,12 +7,12 @@
   RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
   function RoutesConfig($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/view');
 
     $stateProvider
       .state('tree', {
         abstract: true,
-        controller: 'TreeController',
+        controller: 'TreeController as treeCtrl',
         url: '',
         // Note: abstract still needs a ui-view for its children to populate.
         // You can simply add it inline here.
@@ -37,9 +37,19 @@
       .state('tree.view', {
         url: '/view/:path',
         templateUrl: 'templates/view.template.html',
+        controller: 'TreeController as treeCtrl',
         resolve: {
-          path: ['$stateParams', function($stateParams) {
-            console.log($stateParams);
+          path: ['$stateParams','treeData', function($stateParams, treeData) {
+            treeData = null;
+//            console.log($stateParams);
+          }],
+          treeData: ['$stateParams','TreeData', function($stateParams, TreeData) {
+            var subtree = TreeData.getTreeNode($stateParams.path);
+            console.log(TreeData.data())
+            var arr =
+            console.log(subtree)
+            return subtree;
+            //return null;
           }]
         }
       });
