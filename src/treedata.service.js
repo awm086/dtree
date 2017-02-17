@@ -8,7 +8,15 @@
   TreeData.$inject = ['$http', "ApiBasePath"];
   function TreeData($http, ApiBasePath) {
     var service = this;
-
+    // @todo consider how the data object structure shoule look like:
+    // It may mke more sense for it to be in the form:
+      /*   var data = {
+       "nodes": [
+        {
+        "root": true,
+        "label": null,
+        "question": ...
+      */
     service.data = function () {
 
       var data = [{
@@ -220,6 +228,7 @@
       });
     };
 
+    // Give a node path return the subtree.
     var subTree = function subTreeRec(data, indexes) {
       var sub = data[indexes[0]];
       return indexes.length > 1 ? subTree(sub.nodes, indexes.slice(1)) : sub;
@@ -228,9 +237,15 @@
     // todo this may take an id.
     service.getTreeNode = function (path) {
       var data = this.data();
-      path = path.split(':')
-      var subTreeData = subTree(data, path);
-      data[0] = subTreeData;
+      var pathArr = path.split(':')
+      var subTreeData = subTree(data, pathArr);
+      subTreeData.path = path;
+      if (subTreeData.nodes == null) {
+        subTreeData = data;
+        return null;
+      }
+      data = [subTreeData];
+
       console.log(data);
       //console.log(subTreeData);
       return data;

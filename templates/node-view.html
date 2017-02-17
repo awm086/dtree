@@ -1,17 +1,15 @@
-list:
-<div>{data |json}</div>
 <div class="list-group">
     <div class="item">
         <div class="childeren" id="{{data.$$hashKey}}">
             <!-- @Todo determine if we want to allow nodes to be added without questions/lables.-->
             <span ng-show="data.question" class="question list-group-item">{{data.question}}</span>
             <div class="node">
-            <span class="list-group-item" ng-repeat="data in data.nodes">
+            <span class="list-group-item" ng-repeat="currentData in data.nodes  track by $index">
                <div class="list-group">
                   <div class="item">
-                     <span ng-if="data.label">
+                     <span ng-if="currentData.label">
                      <button type="button" class="btn btn-primary"
-                             ng-click="treeCtrl.viewChild(data)">{{data.label}}</button>
+                             ui-sref="tree.view({path:'{{data.path}}:{{$index}}'})" >{{currentData.label}}</button>
                      </span>
                   </div>
                </div>
