@@ -28,12 +28,7 @@
         url: '/admin',
         templateUrl: 'templates/admin.template.html',
       })
-
-      .state('tree.view1', {
-        url: '/view',
-        controller: 'TreeController',
-        templateUrl: 'templates/view.template.html',
-      })
+    
       .state('tree.view', {
         url: '/view/:path',
         templateUrl: 'templates/view.template.html',
@@ -41,7 +36,7 @@
         resolve: {
           path: ['$stateParams','treeData', function($stateParams, treeData) {
             treeData = null;
-//            console.log($stateParams);
+            console.log($stateParams);
           }],
           treeData: ['$stateParams','TreeData', function($stateParams, TreeData) {
             var subtree = TreeData.getTreeNode($stateParams.path);
@@ -51,6 +46,9 @@
             return subtree;
             //return null;
           }]
+        },
+        params: {
+          path: {squash: true, value: '0'},
         }
       });
   }
