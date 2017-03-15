@@ -15,7 +15,7 @@
 
             <button  ng-click="data.showChildForm = !data.showChildForm">Add/edit question</button>
 
-            <div ng-show="data.showNodeForm && ">
+            <div ng-show="data.showNodeForm">
                 <form novalidate class="form">
                     <label>label: <input type="text" ng-model="data.newlabel"/></label><br/>
                     <input type="submit" ng-click="treeCtrl.add(data)" value="Save"/>
@@ -23,22 +23,8 @@
             </div>
 
             <div ng-show="data.showNodeActionForm && !(data.nodes || data.question)">
-                <form novalidate class="form">
-                    <select class="custom-select" ng-model="form.action.type">
-                        <option value="">Select Action Type</option>
-                        <option value="redirect">Redirect</option>
-                        <option value="message">Display Message</option>
-                    </select>
-                    <span ng-show="form.action.type == 'redirect'"><label>URL: <input type="text"/></label><br/>
-                        <p class="form-text text-muted"> Please enter a valid URL to redirect.</p>
-                    </span>
-                    <span ng-show="form.action.type == 'message'"><label>Message: <input type="text"/></label><br/>
-                        <p class="form-text text-muted"> Please enter a message to display to the user.</p>
-                    </span>
-                    <input type="submit" ng-click="" value="Save"/>
-                </form>
+                <action-form data="data.label"></action-form>
             </div>
-
             <div ng-show="data.showChildForm" id="form-{{data.$$hashKey}}">
                 <form novalidate class="form">
                     <label>Question: <input type="text" ng-model="data.question"/></label><br/>
