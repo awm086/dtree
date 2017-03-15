@@ -8,11 +8,27 @@
                 <button ng-click="(data.showNodeForm = !data.showNodeForm)">Add node</button>
                 <button ng-if="data.nodes.length > 0" ng-click="treeCtrl.delete(data)">Delete nodes</button>
             </span>
+
+            <span ng-show="!data.nodes && !data.question" >
+                <button ng-click="(data.showNodeActionForm = !data.showNodeActionForm)">Add Action</button>
+            </span>
+
             <button  ng-click="data.showChildForm = !data.showChildForm">Add/edit question</button>
+
             <div ng-show="data.showNodeForm">
                 <form novalidate class="form">
                     <label>label: <input type="text" ng-model="data.newlabel"/></label><br/>
                     <input type="submit" ng-click="treeCtrl.add(data)" value="Save"/>
+                </form>
+            </div>
+
+            <div ng-show="data.showNodeActionForm">
+                <form novalidate class="form">
+                    <label>URL: <input type="text"/></label><br/>
+                    <p class="form-text text-muted">
+                       Please enter a valid URL to redirect the user to.
+                    </p>
+                    <input type="submit" ng-click="" value="Save"/>
                 </form>
             </div>
 
