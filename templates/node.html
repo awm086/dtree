@@ -9,20 +9,20 @@
                 <button ng-if="data.nodes.length > 0" ng-click="treeCtrl.delete(data)">Delete nodes</button>
             </span>
 
-            <span ng-show="!data.nodes && !data.question" >
+            <span ng-show="!(data.nodes || data.question)" >
                 <button ng-click="(data.showNodeActionForm = !data.showNodeActionForm)">Add Action</button>
             </span>
 
             <button  ng-click="data.showChildForm = !data.showChildForm">Add/edit question</button>
 
-            <div ng-show="data.showNodeForm">
+            <div ng-show="data.showNodeForm && ">
                 <form novalidate class="form">
                     <label>label: <input type="text" ng-model="data.newlabel"/></label><br/>
                     <input type="submit" ng-click="treeCtrl.add(data)" value="Save"/>
                 </form>
             </div>
 
-            <div ng-show="data.showNodeActionForm">
+            <div ng-show="data.showNodeActionForm && !(data.nodes || data.question)">
                 <form novalidate class="form">
                     <select class="custom-select" ng-model="form.action.type">
                         <option value="">Select Action Type</option>
