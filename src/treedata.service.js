@@ -9,17 +9,8 @@
   function TreeData($http, ApiBasePath) {
 
     var service = this;
-    // @todo consider how the data object structure shoule look like:
-    // It may mke more sense for it to be in the form:
-      /*   var data = {
-       "nodes": [
-        {
-        "root": true,
-        "label": null,
-        "question": ...
-      */
-  //  var tree = [{}];
-    var tree = [{
+
+    var treeData = [{
       "root": true,
       "label": null,
       "question": "What product category?",
@@ -216,14 +207,9 @@
         }
       ]
     }];
-    service.data = function () {
-      console.log('getting fresh new data');
-      return tree;
-    };
 
-    // update data
-    service.update = function (newtree) {
-      tree = newtree;
+    service.data = function () {
+      return treeData;
     };
 
     // todo this may take an id.

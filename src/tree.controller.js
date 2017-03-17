@@ -28,6 +28,7 @@
     };
 
     this.add = function (data) {
+      console.log('in add');
       // var post = data.nodes.length + 1;
       if (!data.nodes) {
         data.nodes = [];
@@ -43,7 +44,6 @@
       var newQuestion = data.question ? data.question : null;
       //data.nodes.push({label: "", question: newQuestion, nodes: []});
       data.showChildForm = !data.showChildForm;
-      treeData.update(this.tree);
     };
 
     this.logme = function (data) {
