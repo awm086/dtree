@@ -5,11 +5,22 @@
     .component('actionForm', {
       templateUrl: 'templates/action.component.html',
       bindings: {
-        data: '='
+        data: '=',
+       // onUpdate: '&'
       },
-      controller: actionFormController
+      controller: ActionFormController
     });
 
-  function actionFormController() {
+  function ActionFormController() {
+    var ctrl = this;
+    this.logme = function (somedata) {
+      console.log(somedata);
+      //console.log(ctrl.data);
+      //ctrl.onUpdate(ctrl.data);
+    }
+
+    this.addAction = function (action) {
+      
+    }
   }
 })();

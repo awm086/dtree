@@ -9,9 +9,9 @@
                 <button ng-if="data.nodes.length > 0" ng-click="treeCtrl.delete(data)">Delete nodes</button>
             </span>
 
-            <span ng-show="!(data.nodes || data.question)" >
+        <!--    <span ng-show="!(data.nodes || data.question)" >
                 <button ng-click="(data.showNodeActionForm = !data.showNodeActionForm)">Add Action</button>
-            </span>
+            </span>-->
 
             <button  ng-click="data.showChildForm = !data.showChildForm">Add/edit question</button>
 
@@ -22,9 +22,9 @@
                 </form>
             </div>
 
-            <div ng-show="data.showNodeActionForm && !(data.nodes || data.question)">
-                <action-form data="data.label"></action-form>
-            </div>
+           <!-- <div ng-show="data.showNodeActionForm && !(data.nodes || data.question)">
+                <action-form data="data" on-update="treeCtrl.update(data)"></action-form>
+            </div>-->
             <div ng-show="data.showChildForm" id="form-{{data.$$hashKey}}">
                 <form novalidate class="form">
                     <label>Question: <input type="text" ng-model="data.question"/></label><br/>

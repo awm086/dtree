@@ -1,15 +1,14 @@
-<p>{{data.label}} </p>
-<form novalidate class="form" name="form">
-        <select class="custom-select" ng-model="form.action.type">
-            <option value="">Select Action Type</option>
-            <option value="redirect">Redirect</option>
-            <option value="message">Display Message</option>
-        </select>
-                    <span ng-show="form.action.type == 'redirect'"><label>URL: <input type="text"/></label><br/>
+<p>data is : {{$ctrl.data |json}} </p>
+<p>data is : {{$ctrl.data.label}} </p>
+<select class="custom-select" ng-model="action.type">
+    <option value="">Select Action Type</option>
+    <option value="redirect">Redirect</option>
+    <option value="message">Display Message</option>
+</select>
+<span ng-show="action.type == 'redirect'"><label>URL: <input ng-model="$ctrl.data.action.url" type="text"/></label><br/>
                         <p class="form-text text-muted"> Please enter a valid URL to redirect.</p>
                     </span>
-                    <span ng-show="form.action.type == 'message'"><label>Message: <input type="text"/></label><br/>
+<span ng-show="action.type == 'message'"><label>Message: <input ng-model="$ctrl.data.action.message" type="text"/></label><br/>
                         <p class="form-text text-muted"> Please enter a message to display to the user.</p>
                     </span>
-        <input type="submit" ng-click="treeCtrl.logme(data)" value="Save"/>
-    </form>
+<input type="submit" ng-click="$ctrl.logme($ctrl.data)" value="Save"/>

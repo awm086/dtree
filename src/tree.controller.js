@@ -5,6 +5,8 @@
   TreeController.$inject = ["treeData"];
   function TreeController(treeData) {
 
+    this.tree = treeData;
+
     function trasverse(data, func) {
       for (var i in data) {
         func.apply(data[i]);
@@ -41,22 +43,24 @@
       var newQuestion = data.question ? data.question : null;
       //data.nodes.push({label: "", question: newQuestion, nodes: []});
       data.showChildForm = !data.showChildForm;
-      console.log(this.showChildForm);
-      console.log(this.tree2);
+      treeData.update(this.tree);
     };
 
     this.logme = function (data) {
       console.log(data)
-
     };
 
     this.viewChild = function (data) {
       this.tree = [data];
     };
 
-    //this.tree = [{label: "Root", question: "", nodes: []}];
 
-    this.tree = treeData;
+
+    this.update = function (data) {
+      console.log('in tree controller update', data);
+      console.log(this.tree);
+
+    };
 
     /*this.tree = TreeData.getTreeData().then(function (response) {
       console.log(response);

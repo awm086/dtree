@@ -18,7 +18,7 @@
         // You can simply add it inline here.
         template: '<ui-view/>',
         resolve: {
-          treeData: ['TreeData', function(TreeData) {
+          treeData: ['TreeData', function (TreeData) {
             return TreeData.data();
           }]
         }
@@ -28,21 +28,21 @@
         url: '/admin',
         templateUrl: 'templates/admin.template.html',
       })
-    
+      
       .state('tree.view', {
         url: '/view/:path',
         templateUrl: 'templates/view.template.html',
         controller: 'TreeController as treeCtrl',
         resolve: {
-          path: ['$stateParams','treeData', function($stateParams, treeData) {
+          path: ['$stateParams', 'treeData', function ($stateParams, treeData) {
             treeData = null;
             console.log($stateParams);
           }],
-          treeData: ['$stateParams','TreeData', function($stateParams, TreeData) {
+          treeData: ['$stateParams', 'TreeData', function ($stateParams, TreeData) {
             var subtree = TreeData.getTreeNode($stateParams.path);
             console.log(TreeData.data())
             var arr =
-            console.log(subtree)
+              console.log(subtree)
             return subtree;
             //return null;
           }]
