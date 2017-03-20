@@ -1,21 +1,21 @@
 <div class="list-group">
-    <div class="item">
-        <div class="childeren" id="{{data.$$hashKey}}">
-            <!-- @Todo determine if we want to allow nodes to be added without questions/lables.-->
-            <span ng-show="data.question" class="question list-group-item">{{data.question}}</span>
-            <div class="node">
+  <div class="item">
+    <div class="childeren" id="{{data.$$hashKey}}">
+      <!-- @Todo determine if we want to allow nodes to be added without questions/lables.-->
+      <span ng-show="data.question" class="question list-group-item">{{data.question}}</span>
+      <div class="node">
             <span class="list-group-item" ng-repeat="currentData in data.nodes  track by $index">
                <div class="list-group">
                   <div class="item">
                      <span ng-if="currentData.label">
                      <button type="button" class="btn btn-primary"
-                             ui-sref="tree.view({path:'{{data.path}}:{{$index}}'})" >{{currentData.label}}</button>
+                             ui-sref="tree.view({path:'{{data.path}}:{{$index}}'})">{{currentData.label}}</button>
                      </span>
                   </div>
                </div>
             </span>
-                <!--<span class="list-group-item" ng-repeat="data in data.nodes" ng-include="'templates/node-view.html'"></span> -->
-            </div>
-        </div>
+        <!--<span class="list-group-item" ng-repeat="data in data.nodes" ng-include="'templates/node-view.html'"></span> -->
+      </div>
     </div>
+  </div>
 </div>

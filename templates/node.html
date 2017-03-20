@@ -1,40 +1,36 @@
 <div class="list-group">
-    <div class="item">
-        <span ng-if="data.label" ng-click="treeCtrl.showChilderen2(data)">
-            <button type="button" class="btn btn-primary" ng-click="treeCtrl.logme(data)">{{data.label}}</button>
-        </span>
-        <div class="childeren" id="{{data.$$hashKey}}" ng-class="!data.root && !data.showChilderen ? 'hidden' : ''">
-            <span ng-show="data.nodes.length > 0 || data.question != null">
-                <button ng-click="(data.showNodeForm = !data.showNodeForm)">Add node</button>
-                <button ng-if="data.nodes.length > 0" ng-click="treeCtrl.delete(data)">Delete nodes</button>
-            </span>
-
-        <!--    <span ng-show="!(data.nodes || data.question)" >
-                <button ng-click="(data.showNodeActionForm = !data.showNodeActionForm)">Add Action</button>
-            </span>-->
-
-            <button  ng-click="data.showChildForm = !data.showChildForm">Add/edit question</button>
-
-            <div ng-show="data.showNodeForm">
-                <form novalidate class="form">
-                    <label>label: <input type="text" ng-model="data.newlabel"/></label><br/>
-                    <input type="submit" ng-click="treeCtrl.add(data)" value="Save"/>
-                </form>
-            </div>
-
-           <!-- <div ng-show="data.showNodeActionForm && !(data.nodes || data.question)">
-                <action-form data="data" on-update="treeCtrl.update(data)"></action-form>
-            </div>-->
-            <div ng-show="data.showChildForm" id="form-{{data.$$hashKey}}">
-                <form novalidate class="form">
-                    <label>Question: <input type="text" ng-model="data.question"/></label><br/>
-                    <input type="submit" ng-click="treeCtrl.addChild(data)" value="Save"/>
-                </form>
-            </div>
-            <span ng-show="data.question" class="question list-group-item">{{data.question}}</span>
-            <div class="node">
-                <span class="list-group-item" ng-repeat="data in data.nodes" ng-include="'templates/node.html'"></span>
-            </div>
-        </div>
+  <div class="item">
+    <span ng-if="data.label" ng-click="treeCtrl.showChilderen2(data)">
+    <button type="button" class="btn btn-primary" ng-click="treeCtrl.logme(data)">{{data.label}}</button>
+    </span>
+    <div class="childeren" id="{{data.$$hashKey}}" ng-class="!data.root && !data.showChilderen ? 'hidden' : ''">
+      <span ng-show="data.nodes.length > 0 || data.question != null">
+      <button ng-click="(data.showNodeForm = !data.showNodeForm)">Add node</button>
+      <button ng-if="data.nodes.length > 0" ng-click="treeCtrl.delete(data)">Delete nodes</button>
+      </span>
+      <button ng-click="data.showChildForm = !data.showChildForm">Add/edit question</button>
+      <span ng-show="!(data.nodes || data.question)">
+      <button ng-click="(data.showNodeActionForm = !data.showNodeActionForm)">Add Action</button>
+      </span>
+      <div ng-show="data.showNodeForm">
+        <form novalidate class="form">
+          <label>label: <input type="text" ng-model="data.newlabel"/></label><br/>
+          <input type="submit" ng-click="treeCtrl.add(data)" value="Save"/>
+        </form>
+      </div>
+      <div ng-show="data.showNodeActionForm && !(data.nodes || data.question)">
+        <action-form data="data"></action-form>
+      </div>
+      <div ng-show="data.showChildForm" id="form-{{data.$$hashKey}}">
+        <form novalidate class="form">
+          <label>Question: <input type="text" ng-model="data.question"/></label><br/>
+          <input type="submit" ng-click="treeCtrl.addChild(data)" value="Save"/>
+        </form>
+      </div>
+      <span ng-show="data.question" class="question list-group-item">{{data.question}}</span>
+      <div class="node">
+        <span class="list-group-item" ng-repeat="data in data.nodes" ng-include="'templates/node.html'"></span>
+      </div>
     </div>
+  </div>
 </div>

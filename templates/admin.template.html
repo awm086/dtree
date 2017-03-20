@@ -1,6 +1,2 @@
-<div class="container">
-    <h1>Tree Demo</h1>
-
-    <div class="container" ng-repeat="data in treeCtrl.tree" ng-include="'templates/node.html'"></div>
-    <div> <a ui-sref="tree.view()">View</a></div>
-</div>
+<div class="container" ng-repeat="data in treeCtrl.tree" ng-include="'templates/node.html'"></div>
+<div><a ui-sref="tree.view()">View</a></div>

@@ -5,8 +5,7 @@
     .component('actionForm', {
       templateUrl: 'templates/action.component.html',
       bindings: {
-        data: '=',
-       // onUpdate: '&'
+        data: '='
       },
       controller: ActionFormController
     });
