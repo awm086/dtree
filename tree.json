@@ -1,5 +1,5 @@
 {
-  "tree":{
+  "tree":[{
     "root": true,
     "label": null,
     "question": "What product category?",
@@ -148,5 +148,5 @@
         "nodes": null
       }]
     }]
-  }
+  }]
 }
