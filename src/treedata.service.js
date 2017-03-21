@@ -10,7 +10,7 @@
 
     var service = this;
 
-    var treeData = [{
+    service.treeData = [{
       "root": true,
       "label": null,
       "question": "What product category?",
@@ -228,7 +228,7 @@
 
     // todo this may take an id.
     service.getTreeNode = function (path) {
-      var data = this.data();
+      var data = service.treeData;
       var pathArr = path.split(':')
       var subTreeData = subTree(data, pathArr);
       subTreeData.path = path;

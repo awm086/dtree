@@ -19,7 +19,10 @@
         template: '<ui-view/>',
         resolve: {
           treeData: ['TreeData', function (TreeData) {
-            return TreeData.data();
+            return TreeData.getTreeData().then(function (res) {
+              TreeData.treeData = res.data;
+              return TreeData.treeData;
+            });
           }]
         }
       })
@@ -40,9 +43,7 @@
           }],
           treeData: ['$stateParams', 'TreeData', function ($stateParams, TreeData) {
             var subtree = TreeData.getTreeNode($stateParams.path);
-            console.log(TreeData.data())
-            var arr =
-              console.log(subtree)
+            console.log("subtree", subtree)
             return subtree;
             //return null;
           }]

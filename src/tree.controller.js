@@ -5,7 +5,7 @@
   TreeController.$inject = ["treeData"];
   function TreeController(treeData) {
 
-    this.tree = treeData;
+    this.treeData = treeData;
 
     function trasverse(data, func) {
       for (var i in data) {
