@@ -56,9 +56,9 @@
 
 
 
-    this.update = function (data) {
-      console.log('in tree controller update', data);
-      console.log(this.tree);
+    this.update = function (p, v) {
+      console.log('in tree controller update' );
+      console.log(p,v);
 
     };
 

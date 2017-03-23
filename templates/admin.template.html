@@ -1,2 +1,4 @@
-<div class="container" ng-repeat="data in treeCtrl.treeData" ng-include="'templates/node.html'"></div>
+<div class="container" ng-repeat="data in treeCtrl.treeData">
+  <node data="data"></node>
+</div>
 <div><a ui-sref="tree.view()">View</a></div>

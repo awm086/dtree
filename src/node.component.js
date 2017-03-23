@@ -5,60 +5,64 @@
     .component('node', {
       templateUrl: 'templates/node.component.html',
       bindings: {
-        data: '='
+        data: '=',
+        onDelete: '&',
+        onUpdate: '&'
       },
       controller: NodeController
     });
 
   function NodeController() {
 
-      this.isLeaf = function (data) {
-          return data.nodes ? true : false;
-      };
+    var ctrl = this;
 
-      this.delete = function (data) {
-          data.nodes = [];
-          data.question = null;
-      };
+    ctrl.delete = function () {
+      ctrl.onDelete({hero: ctrl.hero});
+    };
 
-      this.add = function (data) {
-          console.log('in node add');
-          // var post = data.nodes.length + 1;
-          if (!data.nodes) {
-              data.nodes = [];
-          }
-          var newlabel = data.newlabel ? data.newlabel : ""; // 'node' + '-' + post;
-          data.nodes.push({label: newlabel, question: "", nodes: []});
-          console.log(data);
-          data.showNodeForm = !data.showNodeForm;
-      };
+    ctrl.update = function (prop, value) {
+      ctrl.data[prop] = value;
+    };
 
-      this.addChild = function (data) {
-          var newQuestion = data.question ? data.question : null;
-          data.showChildForm = !data.showChildForm;
-      };
+    ctrl.isLeaf = function (data) {
+      return data.nodes ? true : false;
+    };
 
-      this.logme = function (data) {
-          console.log(data)
-      };
+    ctrl.delete = function (data) {
+      data.nodes = [];
+      data.question = null;
+    };
 
-      this.viewChild = function (data) {
-          this.tree = [data];
-      };
+    ctrl.add = function (data) {
+      console.log('in node add');
+      // var post = data.nodes.length + 1;
+      if (!data.nodes) {
+        data.nodes = [];
+      }
+      var newlabel = data.newlabel ? data.newlabel : "";
+      data.nodes.push({label: newlabel, question: "", nodes: []});
+      console.log("after node add", data);
+      data.showNodeForm = !data.showNodeForm;
+    };
+
+    ctrl.addChild = function (data) {
+      var newQuestion = data.question ? data.question : null;
+      data.showChildForm = !data.showChildForm;
+    };
+
+    ctrl.logme = function (data) {
+      console.log(data)
+    };
+
+    ctrl.viewChild = function (data) {
+      this.tree = [data];
+    };
 
 
-
-      this.update = function (data) {
-          console.log('in tree controller update', data);
-          console.log(this.tree);
-
-      };
-
-      this.showChilderen2 = function (data) {
-          console.log(data);
-          data.showChilderen = !data.showChilderen;
-      };
-
+    ctrl.showChilderen2 = function (data) {
+      console.log(data);
+      data.showChilderen = !data.showChilderen;
+    };
 
   }
 })();

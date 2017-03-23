@@ -24,7 +24,7 @@
       <div ng-show="data.showChildForm" id="form-{{data.$$hashKey}}">
         <form novalidate class="form">
           <label>Question: <input type="text" ng-model="data.question"/></label><br/>
-          <input type="submit" ng-click="treeCtrl.addChild(data)" value="Save"/>
+          <button class="btn btn-default" ng-click="treeCtrl.addChild(data)">Save</button>
         </form>
       </div>
       <span ng-show="data.question" class="question list-group-item">{{data.question}}</span>

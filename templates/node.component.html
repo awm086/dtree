@@ -1,17 +1,20 @@
-<div class="list-group">
+<div class="list-group" xmlns="http://www.w3.org/1999/html">
   <div class="item">
-    <span ng-if="$ctrl.data.label" ng-click="$ctrl.showChilderen2($ctrl.data)">
-    <button type="button" class="btn btn-primary" ng-click="$ctrl.logme($ctrl.data)">{{$ctrl.data.label}}</button>
+    <span ng-if="$ctrl.data.label">
+    <button ng-click="$ctrl.showChilderen2($ctrl.data)" type="button" class="btn btn-primary" ng-click="$ctrl.logme($ctrl.data)">{{$ctrl.data.label}}</button>
+    <editable-field field-value="$ctrl.data.label" field-type="text" on-update="$ctrl.update('label', value)"></editable-field>
     </span>
     <div class="childeren" id="{{$ctrl.data.$$hashKey}}" ng-class="!$ctrl.data.root && !$ctrl.data.showChilderen ? 'hidden' : ''">
+      <div>
       <span ng-show="$ctrl.data.nodes.length > 0 || $ctrl.data.question != null">
-      <button ng-click="($ctrl.data.showNodeForm = !$ctrl.data.showNodeForm)">Add node</button>
-      <button ng-if="$ctrl.data.nodes.length > 0" ng-click="$ctrl.delete($ctrl.data)">Delete nodes</button>
+        <button ng-click="($ctrl.data.showNodeForm = !$ctrl.data.showNodeForm)">Add node</button>
+        <button ng-if="$ctrl.data.nodes.length > 0" ng-click="$ctrl.delete($ctrl.data)">Delete nodes</button>
       </span>
       <button ng-click="$ctrl.data.showChildForm = !$ctrl.data.showChildForm">Add/edit question</button>
       <span ng-show="!($ctrl.data.nodes || $ctrl.data.question)">
       <button ng-click="($ctrl.data.showNodeActionForm = !$ctrl.data.showNodeActionForm)">Add Action</button>
       </span>
+        </div>
       <div ng-show="$ctrl.data.showNodeForm">
         <form novalidate class="form">
           <label>label: <input type="text" ng-model="$ctrl.data.newlabel"/></label><br/>
@@ -22,10 +25,8 @@
         <action-form $ctrl.data="$ctrl.data"></action-form>
       </div>
       <div ng-show="$ctrl.data.showChildForm" id="form-{{$ctrl.data.$$hashKey}}">
-        <form novalidate class="form">
-          <label>Question: <input type="text" ng-model="$ctrl.data.question"/></label><br/>
-          <input type="submit" ng-click="$ctrl.addChild($ctrl.data)" value="Save"/>
-        </form>
+          <label>Question: <input type="text" ng-model="$ctrl.data.question"/></label>
+          <button class="btn btn-default" ng-click="$ctrl.addChild($ctrl.data)"> Save</button>
       </div>
       <span ng-show="$ctrl.data.question" class="question list-group-item">{{$ctrl.data.question}}</span>
       <div class="node">

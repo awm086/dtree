@@ -10,6 +10,11 @@
     $urlRouterProvider.otherwise('/view');
 
     $stateProvider
+      .state('home', {
+        url: '/home',
+        templateUrl: 'templates/home.template.html',
+      })
+
       .state('tree', {
         abstract: true,
         controller: 'TreeController as treeCtrl',
@@ -20,6 +25,7 @@
         resolve: {
           treeData: ['TreeData', function (TreeData) {
             return TreeData.getTreeData().then(function (res) {
+              console.log('getting resolved')
               TreeData.treeData = res.data;
               return TreeData.treeData;
             });
@@ -37,11 +43,11 @@
         templateUrl: 'templates/view.template.html',
         controller: 'TreeController as treeCtrl',
         resolve: {
-          path: ['$stateParams', 'treeData', function ($stateParams, treeData) {
-            treeData = null;
-            console.log($stateParams);
-          }],
-          treeData: ['$stateParams', 'TreeData', function ($stateParams, TreeData) {
+          // Injection treeData makes it possible to resolve the parent state treeData if the initial state
+          // land on /view. For example, without this injection, if the user goes to '/view' and refresh page
+          // treeData won't get resolved. Adding the DI forces angular to resolve it in the parent state ('tree').
+          treeData: ['$stateParams', 'TreeData', 'treeData', function ($stateParams, TreeData, treeData) {
+            console.log('treeData', treeData)
             var subtree = TreeData.getTreeNode($stateParams.path);
             console.log("subtree", subtree)
             return subtree;
