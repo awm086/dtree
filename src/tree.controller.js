@@ -7,7 +7,7 @@
 
     this.treeData = treeData;
 
-    function trasverse(data, func) {
+   /* function trasverse(data, func) {
       for (var i in data) {
         func.apply(data[i]);
         if (data[i] !== null && typeof(data[i]) == "object") {
@@ -62,15 +62,15 @@
 
     };
 
-    /*this.tree = TreeData.getTreeData().then(function (response) {
+    /!*this.tree = TreeData.getTreeData().then(function (response) {
       console.log(response);
       return response.data;
     }, function (error) {
       console.log('opsssss' + error);
-    });*/
+    });*!/
 
 
-    /*
+    /!*
      this.showChilderen = function(key) {
      //console.log(key);
      //var elementResult = document.getElementById(key);
@@ -86,13 +86,13 @@
      console.log(myElement2);
      myElement2.removeClass('hidden');
      }
-     */
+     *!/
 
     this.showChilderen2 = function (data) {
       console.log(data);
       data.showChilderen = !data.showChilderen;
     };
-
+*/
   }
 
 
