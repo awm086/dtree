@@ -20,7 +20,7 @@
     service.getTreeData = function () {
       return $http({
         Method: 'GET',
-        url: (ApiBasePath + "/tree.json")
+        url: (ApiBasePath + "tree.json")
       });
     };
 
