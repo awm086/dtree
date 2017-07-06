@@ -5,13 +5,8 @@ function EditableFieldController($scope, $element, $attrs) {
   ctrl.handleModeChange = function() {
     if (ctrl.editMode) {
       ctrl.onUpdate({value: ctrl.fieldValue});
-      ctrl.fieldValueCopy = ctrl.fieldValue;
     }
     ctrl.editMode = !ctrl.editMode;
-  };
-
-  ctrl.reset = function() {
-    ctrl.fieldValue = ctrl.fieldValueCopy;
   };
 
   ctrl.$onInit = function() {
