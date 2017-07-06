@@ -1,0 +1,36 @@
+# Ignore OS X Generated Files
+.DS_Store
+
+# Ignore Composer generated files
+bin
+vendor
+!docroot/sites/all/libraries/composer/vendor
+
+# Buildfiles
+build.out
+build.properties
+
+# Ignore paths that contain user-generated content.
+docroot/files
+docroot/sites/*/files
+docroot/sites/*/private
+docroot/sites/sites.local.php
+docroot/sites/*/settings.local.php
+
+/nbproject
+
+node_modules
+.sass-cache
+*.css.map
+/docroot/phpcasdebug.log
+/tests/code/vendor
+/.idea
+/docroot/.idea
+
+# Ignore Bundler Cache
+.bundle/
+
+atlassian-ide-plugin.xml
+
+# Ignore deployment scripts logs
+scripts/drush-post-deploy.log
