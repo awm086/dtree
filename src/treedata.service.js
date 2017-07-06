@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   angular.module("dTreeApp")
-    .constant('ApiBasePath', ' http://localhost:3000')
+    .constant('ApiBasePath', '/tree.json')
     .service('TreeData', TreeData);
 
 
