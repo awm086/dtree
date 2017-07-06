@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   angular.module("dTreeApp")
-    .constant('ApiBasePath', '')
+    .constant('ApiBasePath', 'https://awm086.github.io/dtree')
     .service('TreeData', TreeData);
 
 
@@ -20,7 +20,7 @@
     service.getTreeData = function () {
       return $http({
         Method: 'GET',
-        url: (ApiBasePath + "tree.json")
+        url: (ApiBasePath + "/tree.json")
       });
     };
 
